@@ -11,6 +11,22 @@
 	  <script src="lib/scripts/controllers.js"></script>
 	</head>
 	<body ng-controller="scController">
-		
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <a class="navbar-brand">SoundCloud Navigation</a>
+    </nav>
+		<section class="container col-md-8">
+      <h2>Post and share your sounds with the world</h2>
+      <div class="well upload-area text-center">
+        <button class="btn btn-danger">Choose file to upload</button>
+        <button class="btn btn-default">Start new recording</button>
+      </div>
+      <div class="">
+        <p>
+          You have 120 minutes left.
+          <span class="text-muted">Pro accounts have more time and access to advanced features.</span>
+          <button class="btn btn-warning">Go Pro</button>
+        </p>
+      </div>
+    </section>
 	</body>
 </html>
