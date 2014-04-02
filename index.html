@@ -19,14 +19,38 @@
       <div class="well upload-area text-center">
         <button class="btn btn-danger">Choose file to upload</button>
         <button class="btn btn-default">Start new recording</button>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox">
+            <small>Make a playlist when multiple files are selected</small>
+          </label>
+        </div>
       </div>
-      <div class="">
+      <div class="pro-ad">
         <p>
           You have 120 minutes left.
           <span class="text-muted">Pro accounts have more time and access to advanced features.</span>
-          <button class="btn btn-warning">Go Pro</button>
+          <span ng-controller="ModalDemoCtrl" class="pull-right">
+              <script type="text/ng-template" id="myModalContent.html">
+                  <div class="modal-header">
+                      <h3>I'm a modal!</h3>
+                  </div>
+                  <div class="modal-body">
+                      Wow.
+                  </div>
+                  <div class="modal-footer">
+                      <button class="btn btn-primary" ng-click="ok()">OK</button>
+                      <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                  </div>
+              </script>
+
+              <button class="btn btn-warning" ng-click="open();">Go Pro</button>
+          </span>
         </p>
       </div>
+      <p><small>Important: By sharing, you confirm that your sounds comply with our Terms of Use and don't infringe anyone else's rights. If in doubt, check our Copyright Information pages and FAQs before uploading.</small></p>
+
+      <p><small>Problems uploading? Please check our troubleshooting tips or use the Classic Uploader.</small></p>
     </section>
 	</body>
 </html>

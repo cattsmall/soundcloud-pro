@@ -3,3 +3,26 @@
     float:none;
   }
 }
+
+.upload-area {
+  padding-top:145px;
+  padding-bottom:105px;
+  border-radius:0;
+  margin:20px 0 0;
+}
+
+.pro-ad {
+  @extend .well;
+  background:$white;
+  border-top-left-radius:0;
+  border-top-right-radius:0;
+  border-top:0;
+  
+  p {
+    margin:0;
+  }
+  
+  .pull-right {
+    margin-top:-7px;
+  }
+}

@@ -4471,7 +4471,7 @@ a.list-group-item-danger {
   .embed-responsive.embed-responsive-4by3 {
     padding-bottom: 75%; }
 
-.well {
+.well, .pro-ad {
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
@@ -4480,7 +4480,7 @@ a.list-group-item-danger {
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05); }
-  .well blockquote {
+  .well blockquote, .pro-ad blockquote {
     border-color: #ddd;
     border-color: rgba(0, 0, 0, 0.15); }
 
@@ -5193,3 +5193,19 @@ button.close {
     display: none !important; } }
 .container.col-md-8 {
   float: none; }
+
+.upload-area {
+  padding-top: 145px;
+  padding-bottom: 105px;
+  border-radius: 0;
+  margin: 20px 0 0; }
+
+.pro-ad {
+  background: white;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: 0; }
+  .pro-ad p {
+    margin: 0; }
+  .pro-ad .pull-right {
+    margin-top: -7px; }
