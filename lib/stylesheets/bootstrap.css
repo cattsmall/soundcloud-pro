@@ -5804,6 +5804,8 @@ button.close {
       display: table; }
     .modal-upgrade-sell .modal-dialog .modal-body:after {
       clear: both; }
+  .modal-upgrade-sell .modal-dialog .modal-footer p {
+    margin: 0; }
 .modal-upgrade-sell .pro-benefits {
   margin: 40px 0 0;
   padding: 0;

@@ -66,6 +66,12 @@
       @include clearfix;
       padding:0;
     }
+    
+    .modal-footer {
+      p {
+        margin:0;
+      }
+    }
   }
   
   .pro-benefits {
