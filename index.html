@@ -184,7 +184,12 @@
                     </section>
                   </div>
                   <div class="modal-footer" ng-class="{slidedown: paymentType, slideup: !paymentType}">
-                    <button class="btn btn-danger btn-lg" ng-click="openNext('master')">Finish Upgrading</button>
+                    <button class="btn btn-danger btn-lg" ng-click="ok();">
+                      <span ng-if="paymentType != 'credit'">Checkout with PayPal</span>
+                      <span ng-if="paymentType == 'credit'">                   
+                        Finish Upgrading
+                      </span>
+                    </button>
                   </div>
               </script>
               <button class="btn btn-warning" ng-click="open();">Go Pro</button>
