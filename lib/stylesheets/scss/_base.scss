@@ -4,6 +4,18 @@
   }
 }
 
+.btn {
+  outline:none;
+  
+  &:focus, &:active, &.active {
+    outline:none;
+    
+    &:focus {
+      outline:none;
+    }
+  }
+}
+
 .upload-area {
   padding-top:145px;
   padding-bottom:105px;
@@ -109,7 +121,7 @@
   .pro-sell-column {
     width:55%;
     float:left;
-    padding:40px 40px;
+    padding:35px 40px 0;
     
     h2 {
       margin:0;
@@ -365,13 +377,17 @@
           
           &.zip-city {
             .form-group {
-              width:23%;
+              width:20%;
               
               + .form-group {
-                width:35%;
+                width:28%;
                 
                 + .form-group {
-                  width:38%;
+                  width:33%;
+                  
+                  + .form-group {
+                    width:13%;
+                  }
                 }
               }
             }
@@ -381,6 +397,25 @@
       
       + section {
         border-top: 1px solid $gray-lighter;
+      }
+    }
+  }
+}
+
+.modal-upgrade-success {
+  .modal-dialog {
+    margin-top:100px;
+  }
+  .modal-content {
+    background:$state-success-bg;
+    text-align:center;
+    
+    h3 {
+      color:$state-success-text;
+      
+      &:before {
+        @extend .ss-icon.ss-standard;
+        content:"check ";
       }
     }
   }

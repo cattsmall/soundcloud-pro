@@ -5208,7 +5208,7 @@ button.close {
   font-weight: normal;
   font-style: normal; }
 
-.ss-icon, .ss-icon.ss-standard,
+.ss-icon, .ss-icon.ss-standard, .modal-upgrade-success .modal-content h3:before,
 [class^="ss-"]:before, [class*=" ss-"]:before,
 [class^="ss-"].ss-standard:before, [class*=" ss-"].ss-standard:before,
 [class^="ss-"].right:after, [class*=" ss-"].right:after,
@@ -5883,6 +5883,13 @@ button.close {
 .container.col-md-8 {
   float: none; }
 
+.btn {
+  outline: none; }
+  .btn:focus, .btn:active, .btn.active {
+    outline: none; }
+    .btn:focus:focus, .btn:active:focus, .btn.active:focus {
+      outline: none; }
+
 .upload-area {
   padding-top: 145px;
   padding-bottom: 105px;
@@ -5957,7 +5964,7 @@ button.close {
 .modal-upgrade-sell .pro-sell-column {
   width: 55%;
   float: left;
-  padding: 40px 40px; }
+  padding: 35px 40px 0; }
   .modal-upgrade-sell .pro-sell-column h2 {
     margin: 0; }
   .modal-upgrade-sell .pro-sell-column .price {
@@ -6104,13 +6111,25 @@ button.close {
       border-bottom: 1px solid #eeeeee;
       margin-bottom: 10px; }
     .modal-upgrade-checkout .modal-body > section.billing-address fieldset.zip-city .form-group {
-      width: 23%; }
+      width: 20%; }
       .modal-upgrade-checkout .modal-body > section.billing-address fieldset.zip-city .form-group + .form-group {
-        width: 35%; }
+        width: 28%; }
         .modal-upgrade-checkout .modal-body > section.billing-address fieldset.zip-city .form-group + .form-group + .form-group {
-          width: 38%; }
+          width: 33%; }
+          .modal-upgrade-checkout .modal-body > section.billing-address fieldset.zip-city .form-group + .form-group + .form-group + .form-group {
+            width: 13%; }
     .modal-upgrade-checkout .modal-body > section + section {
       border-top: 1px solid #eeeeee; }
+
+.modal-upgrade-success .modal-dialog {
+  margin-top: 100px; }
+.modal-upgrade-success .modal-content {
+  background: #dff0d8;
+  text-align: center; }
+  .modal-upgrade-success .modal-content h3 {
+    color: #3c763d; }
+    .modal-upgrade-success .modal-content h3:before {
+      content: "check "; }
 
 .dropdown .dropdown-toggle .ss-icon {
   font-size: 10px;

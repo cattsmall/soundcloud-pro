@@ -63,7 +63,7 @@
                             <strong>2 hours</strong> of upload time
                           </li>
                           <li>
-                            <strong>Basic stats</strong> - Monitor social activity on your tracks.
+                            <strong>Basic stats</strong> - Monitor social activity on your tracks
                           </li>
                         </ul>
                       </div>
@@ -79,10 +79,10 @@
                             <strong>4 hours</strong> of upload time
                           </li>
                           <li>
-                            <strong>More stats</strong> - get insights about your listeners and where your tracks get the most traffic.
+                            <strong>More stats</strong> - get insights about your listeners and where your tracks get the most traffic
                           </li>
                           <li>
-                            Toggle visibility of comments &amp; stats on your tracks.
+                            Toggle visibility of comments &amp; stats on your tracks
                           </li>
                           <li>
                             Pin tracks and playlists to the top of your profile
@@ -103,15 +103,15 @@
                         </li>
                         <li>
                           <i class="ss-icon ss-standard">barchart</i>
-                          <strong>Comprehensive stats</strong> - know from which sites and apps your tracks are being played.
+                          <strong>Comprehensive stats</strong> - get insights about your listeners &amp; from which sites/apps your tracks are played
                         </li>
                         <li>
                           <i class="ss-icon ss-standard">chat</i>
-                          Toggle visibility of comments &amp; stats on your tracks.
+                          Toggle visibility of comments &amp; stats on your tracks
                         </li>
                         <li>
                           <i class="ss-icon ss-standard">pin</i>
-                          Suggest tracks &amp; playlists in embedded players
+                          Pin tracks &amp; playlists to the top of your profile as well as suggest them in embedded players
                         </li>
                       </ul>
                       <button class="btn btn-danger btn-lg" ng-click="openNext('master')">Upgrade to Master</button>
@@ -172,18 +172,18 @@
                     
                     <section class="payment-option">
                       <h4>Payment method:</h4>
-                      <button class="btn btn-danger" ng-click="paymentType = 'credit';" ng-class="{'btn-lg': paymentType != 'paypal'}">
+                      <button class="btn btn-danger" ng-click="paymentType = 'credit';" ng-class="{'btn-lg': paymentType != 'paypal', 'btn-sm': paymentType == 'paypal', 'active': paymentType == 'credit'}">
                         <i class="ss-icon ss-standard">&#x1F4B3;</i>
                         Credit
                       </button>
-                      <button class="btn btn-warning" ng-click="paymentType = 'paypal';" ng-class="{'btn-lg': paymentType != 'credit'}">
+                      <button class="btn btn-warning" ng-click="paymentType = 'paypal';" ng-class="{'btn-lg': paymentType != 'credit', 'btn-sm': paymentType == 'credit', 'active': paymentType == 'paypal'}">
                         <i class="ss-icon ss-social">PayPal</i>
                         PayPal
                       </button>
                       
                       <form name="billingInfo" ng-class="{slidedown: paymentType == 'credit', slideup: paymentType != 'credit'}">
                         <div class="form-group">
-                          <label>Name as Shown on Card</label>
+                          <label>Name on Card</label>
                           <input type="text" class="form-control" ng-model="user.card.name">
                         </div>
                         <fieldset class="card-info">
@@ -239,17 +239,17 @@
                         
                           <div class="form-group">
                             <label>City</label>
-                            <input type="text" class="form-control" ng-model="user.city" placeholder="Your city or town">
-                          </div>
-                          
-                          <div class="form-group">
-                            <label>State/Province</label>
-                            <input type="text" class="form-control" ng-model="user.state" placeholder="Your state or province">
+                            <input type="text" class="form-control" ng-model="user.city" placeholder="City or town">
                           </div>
                           
                           <div class="form-group">
                             <label>Country</label>
                             <input type="text" class="form-control" ng-model="user.country">
+                          </div>
+                          
+                          <div class="form-group" ng-if="user.country == 'United States'">
+                            <label>State</label>
+                            <input type="text" class="form-control" ng-model="user.state" placeholder="e.g. NY">
                           </div>
                         </fieldset>
                       </form>
@@ -268,7 +268,7 @@
               <!-- Script -->
               <script type="text/ng-template" id="modal3Content.html">
                 <div class="modal-body">
-                  <h3>Thanks, {{user.firstname}}, you're ready to go!</h3>
+                  <h3>Thanks {{user.firstname}}, you're ready to go!</h3>
                   <p>Your account has been upgraded successfully. You can now upload more tracks.</p>
                 </div>
               </script>
