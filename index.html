@@ -31,7 +31,7 @@
           You have 120 minutes left.
           <span class="text-muted">Pro accounts have more time and access to advanced features.</span>
           <span ng-controller="Modal1Ctrl" class="pull-right">
-              <script type="text/ng-template" id="myModalContent.html">
+              <script type="text/ng-template" id="modal1Content.html">
                   <div class="modal-header text-center">
                     <button type="button" class="close" ng-click="cancel()">&times;</button>
                       <h3>Get more when you upgrade your account</h3>
@@ -75,7 +75,7 @@
                           Pin tracks and playlists to the top of your profile
                         </li>
                       </ul>
-                      <button class="btn btn-warning btn-lg" ng-click="ok()">Upgrade to Pro</button>
+                      <button class="btn btn-warning btn-lg" ng-click="openNext('pro')">Upgrade to Pro</button>
                     </section>
                     <section class="pro-sell-column">
                       <h2>Master</h2>
@@ -101,14 +101,91 @@
                           Suggest tracks &amp; playlists in embedded players
                         </li>
                       </ul>
-                      <button class="btn btn-danger btn-lg" ng-click="ok()">Upgrade to Master</button>
+                      <button class="btn btn-danger btn-lg" ng-click="openNext('master')">Upgrade to Master</button>
                     </section>
                   </div>
                   <div class="modal-footer">
                     <p class="text-muted text-center">Not quite sure about something? <a>See a list of frequently asked questions here.</a></p>
                   </div>
               </script>
-
+              
+              <script type="text/ng-template" id="modal2Content.html">
+                  <div class="modal-header text-center">
+                    <button type="button" class="close" ng-click="cancel()">&times;</button>
+                      <h3>Get more when you upgrade your account</h3>
+                      <ul class="pro-benefits">
+                        <li>
+                          <h4>More uploads</h4>
+                          <p>Upload 4 hours worth of tracks with a <strong>Pro</strong> plan or unlimited hours with a <strong>Master</strong> plan.</p>
+                        </li>
+                        <li>
+                          <h4>More data</h4>
+                          <p>Extensive stats help you learn about your audience and share your content in a smarter way.</p>
+                        </li>
+                        <li>
+                          <h4>More control</h4>
+                          <p>Increased privacy management and spotlights help you cultivate your audience on your terms.</p>
+                        </li>
+                      </ul>
+                  </div>
+                  <div class="modal-body">
+                    <section class="pro-sell-column well">
+                      <h2>Pro</h2>
+                      <p class="price">
+                        $6/month
+                        <small>or $55/year</small>
+                      </p>
+                      <ul class="plan-benefits">
+                        <li>
+                          <i class="ss-icon ss-standard">music</i>
+                          <strong>4 hours</strong> of upload time
+                        </li>
+                        <li>
+                          <i class="ss-icon ss-standard">barchart</i>
+                          <strong>More stats</strong> - get insights about your listeners and where your tracks get the most traffic.
+                        </li>
+                        <li>
+                          <i class="ss-icon ss-standard">chat</i>
+                          Manage the visibility of comments and stats on your tracks.
+                        </li>
+                        <li>
+                          <i class="ss-icon ss-standard">pin</i>
+                          Pin tracks and playlists to the top of your profile
+                        </li>
+                      </ul>
+                      <button class="btn btn-warning btn-lg" ng-click="openNext('pro')">Upgrade to Pro</button>
+                    </section>
+                    <section class="pro-sell-column">
+                      <h2>Master</h2>
+                      <p class="price">
+                        $15/month
+                        <small>or $135/year</small>
+                      </p>
+                      <ul class="plan-benefits">
+                        <li>
+                          <i class="ss-icon ss-standard">music</i>
+                          <strong tooltip="Single sound file sizes are limited to 2GB and total upload time per week is limited to 30 hours.">Unlimited<span class="text-muted">*</span></strong> upload time
+                        </li>
+                        <li>
+                          <i class="ss-icon ss-standard">barchart</i>
+                          <strong>Comprehensive stats</strong> - know from which sites and apps your tracks are being played.
+                        </li>
+                        <li>
+                          <i class="ss-icon ss-standard">chat</i>
+                          Manage the visibility of comments and stats on your tracks.
+                        </li>
+                        <li>
+                          <i class="ss-icon ss-standard">pin</i>
+                          Suggest tracks &amp; playlists in embedded players
+                        </li>
+                      </ul>
+                      <button class="btn btn-danger btn-lg" ng-click="openNext('master')">Upgrade to Master</button>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <p class="text-muted text-center">Not quite sure about something? <a>See a list of frequently asked questions here.</a></p>
+                  </div>
+              </script>
               <button class="btn btn-warning" ng-click="open();">Go Pro</button>
           </span>
         </p>
