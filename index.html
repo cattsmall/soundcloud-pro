@@ -26,7 +26,7 @@
           </label>
         </div>
       </div>
-      <div class="pro-ad">
+      <div class="pro-ad" ng-if="!hasPro">
         <p>
           You have 120 minutes left.
           <span class="text-muted">Pro accounts have more time and access to advanced features.</span>
@@ -109,81 +109,82 @@
                   </div>
               </script>
               
+              <!-- Next dialog -->
               <script type="text/ng-template" id="modal2Content.html">
                   <div class="modal-header text-center">
                     <button type="button" class="close" ng-click="cancel()">&times;</button>
-                      <h3>Get more when you upgrade your account</h3>
-                      <ul class="pro-benefits">
-                        <li>
-                          <h4>More uploads</h4>
-                          <p>Upload 4 hours worth of tracks with a <strong>Pro</strong> plan or unlimited hours with a <strong>Master</strong> plan.</p>
-                        </li>
-                        <li>
-                          <h4>More data</h4>
-                          <p>Extensive stats help you learn about your audience and share your content in a smarter way.</p>
-                        </li>
-                        <li>
-                          <h4>More control</h4>
-                          <p>Increased privacy management and spotlights help you cultivate your audience on your terms.</p>
-                        </li>
-                      </ul>
+                      <h3>Upgrade your account</h3>
+                      <p>Only a minute until you can upload more tracks.</p>
                   </div>
                   <div class="modal-body">
-                    <section class="pro-sell-column well">
-                      <h2>Pro</h2>
-                      <p class="price">
-                        $6/month
-                        <small>or $55/year</small>
-                      </p>
-                      <ul class="plan-benefits">
-                        <li>
-                          <i class="ss-icon ss-standard">music</i>
-                          <strong>4 hours</strong> of upload time
-                        </li>
-                        <li>
-                          <i class="ss-icon ss-standard">barchart</i>
-                          <strong>More stats</strong> - get insights about your listeners and where your tracks get the most traffic.
-                        </li>
-                        <li>
-                          <i class="ss-icon ss-standard">chat</i>
-                          Manage the visibility of comments and stats on your tracks.
-                        </li>
-                        <li>
-                          <i class="ss-icon ss-standard">pin</i>
-                          Pin tracks and playlists to the top of your profile
-                        </li>
-                      </ul>
-                      <button class="btn btn-warning btn-lg" ng-click="openNext('pro')">Upgrade to Pro</button>
+                    <section class="selected-plan">
+                      <h4>
+                        Selected plan:
+                        <span class="dropdown">
+                          <a class="dropdown-toggle">
+                            <span ng-if="selectedPlan == 'pro'">Pro</span>
+                            <span ng-if="selectedPlan == 'master'">Master</span>
+                            <i class="ss-icon ss-standard">&#x25BE;</i>
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li ng-show="selectedPlan == 'master'">
+                              <a ng-click="togglePlan('pro')">Pro</a>
+                            </li>
+                            <li ng-show="selectedPlan == 'pro'">
+                              <a ng-click="togglePlan('master')">Master</a>
+                            </li>
+                          </ul>
+                        </span>
+                      </h4>
                     </section>
-                    <section class="pro-sell-column">
-                      <h2>Master</h2>
-                      <p class="price">
-                        $15/month
-                        <small>or $135/year</small>
-                      </p>
-                      <ul class="plan-benefits">
-                        <li>
-                          <i class="ss-icon ss-standard">music</i>
-                          <strong tooltip="Single sound file sizes are limited to 2GB and total upload time per week is limited to 30 hours.">Unlimited<span class="text-muted">*</span></strong> upload time
-                        </li>
-                        <li>
-                          <i class="ss-icon ss-standard">barchart</i>
-                          <strong>Comprehensive stats</strong> - know from which sites and apps your tracks are being played.
-                        </li>
-                        <li>
-                          <i class="ss-icon ss-standard">chat</i>
-                          Manage the visibility of comments and stats on your tracks.
-                        </li>
-                        <li>
-                          <i class="ss-icon ss-standard">pin</i>
-                          Suggest tracks &amp; playlists in embedded players
-                        </li>
-                      </ul>
-                      <button class="btn btn-danger btn-lg" ng-click="openNext('master')">Upgrade to Master</button>
+                    
+                    <section class="payment-cycle">
+                      <h4>Payment cycle:</h4>
+                      <div class="radio" ng-if="selectedPlan == 'pro'">
+                        <label>
+                          <input type="radio" ng-model="payCycle" value="6">
+                          $6/month
+                        </label>
+                      </div>
+                      <div class="radio" ng-if="selectedPlan == 'pro'">
+                        <label>
+                        <input type="radio" ng-model="payCycle" value="55">
+                          $55/year
+                        </label>
+                      </div>
+                      
+                      <div class="radio" ng-if="selectedPlan == 'master'">
+                        <label>
+                        <input type="radio" ng-model="payCycle" value="15">
+                          $15/month
+                        </label>
+                      </div>
+                      <div class="radio" ng-if="selectedPlan == 'master'">
+                        <label>
+                        <input type="radio" ng-model="payCycle" value="135">
+                          $135/year
+                        </label>
+                      </div>
+                    </section>
+                    
+                    <section class="payment-option">
+                      <h4>Payment method:</h4>
+                      <button class="btn btn-danger btn-lg" ng-click="paymentType = 'credit';">
+                        <i class="ss-icon ss-standard">&#x1F4B3;</i>
+                        Credit
+                      </button>
+                      <button class="btn btn-warning btn-lg" ng-click="paymentType = 'paypal';">
+                        <i class="ss-icon ss-social">PayPal</i>
+                        PayPal
+                      </button>
+                    </section>
+                    
+                    <section class="billing-address" ng-class="{slidedown: paymentType == 'credit', slideup: paymentType != 'credit'}">
+                      <h4>Billing Address:</h4>
                     </section>
                   </div>
-                  <div class="modal-footer">
-                    <p class="text-muted text-center">Not quite sure about something? <a>See a list of frequently asked questions here.</a></p>
+                  <div class="modal-footer" ng-class="{slidedown: paymentType, slideup: !paymentType}">
+                    <button class="btn btn-danger btn-lg" ng-click="openNext('master')">Finish Upgrading</button>
                   </div>
               </script>
               <button class="btn btn-warning" ng-click="open();">Go Pro</button>
