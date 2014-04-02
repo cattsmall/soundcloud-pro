@@ -151,7 +151,7 @@
                       <div class="radio" ng-if="selectedPlan == 'pro'">
                         <label>
                         <input type="radio" ng-model="payCycle" value="55" name="payCycleRadio">
-                          $55/year
+                          $55/year <small class="text-success">(save $17!)</small>
                         </label>
                       </div>
                       
@@ -164,10 +164,10 @@
                       <div class="radio" ng-if="selectedPlan == 'master'">
                         <label>
                         <input type="radio" ng-model="payCycle" value="135" name="payCycleRadio">
-                          $135/year
+                          $135/year <small class="text-success">(save $45!)</small>
                         </label>
                       </div>
-                      <p class="text-muted"><small>All prices are in USD.</small></p>
+                      <p class="text-muted"><small>All paid plans come with a 30 day money back guarantee. Prices are in US Dollars.</small></p>
                     </section>
                     
                     <section class="payment-option">
@@ -258,9 +258,7 @@
                   <div class="modal-footer" ng-class="{slidedown: paymentType, slideup: !paymentType}">
                     <button class="btn btn-lg" ng-click="openNext();" ng-class="{'btn-danger': paymentType == 'credit', 'btn-warning': paymentType == 'paypal'}">
                       <span ng-if="paymentType != 'credit'">Checkout with PayPal</span>
-                      <span ng-if="paymentType == 'credit'">                   
-                        Finish Upgrading
-                      </span>
+                      <span ng-if="paymentType == 'credit'">Finish Upgrading</span>
                     </button>
                   </div>
               </script>
