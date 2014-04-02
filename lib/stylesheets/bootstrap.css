@@ -1069,7 +1069,7 @@ mark,
 .text-justify {
   text-align: justify; }
 
-.text-muted {
+.text-muted, label.optional {
   color: #999999; }
 
 .text-primary {
@@ -5888,6 +5888,8 @@ button.close {
   padding-bottom: 105px;
   border-radius: 0;
   margin: 20px 0 0; }
+  .upload-area + p {
+    margin-top: 20px; }
 
 .pro-ad {
   background: white;
@@ -6042,10 +6044,71 @@ button.close {
         margin-left: -15px; }
       .modal-upgrade-checkout .modal-body > section.payment-cycle .radio + .radio {
         margin: 0 0 0 6px; }
+    .modal-upgrade-checkout .modal-body > section .form-group {
+      text-align: left; }
     .modal-upgrade-checkout .modal-body > section.payment-option {
       padding-bottom: 30px; }
       .modal-upgrade-checkout .modal-body > section.payment-option .btn + .btn {
         margin-left: 8px; }
+      .modal-upgrade-checkout .modal-body > section.payment-option form.slidedown {
+        margin-top: 20px; }
+      .modal-upgrade-checkout .modal-body > section.payment-option form fieldset .form-group {
+        float: left; }
+        .modal-upgrade-checkout .modal-body > section.payment-option form fieldset .form-group + .form-group {
+          margin-left: 2%; }
+      .modal-upgrade-checkout .modal-body > section.payment-option form .card-info {
+        position: relative; }
+        .modal-upgrade-checkout .modal-body > section.payment-option form .card-info .form-group {
+          width: 38%;
+          margin-bottom: 0; }
+          .modal-upgrade-checkout .modal-body > section.payment-option form .card-info .form-group + .form-group {
+            width: 20%; }
+            .modal-upgrade-checkout .modal-body > section.payment-option form .card-info .form-group + .form-group + .form-group {
+              width: 20%; }
+        .modal-upgrade-checkout .modal-body > section.payment-option form .card-info .credit-card-type {
+          display: block;
+          width: 16%;
+          height: 57px;
+          background: #eeeeee;
+          right: 0;
+          bottom: 0;
+          position: absolute;
+          border-radius: 4px;
+          border: 1px solid rgba(0, 0, 0, 0.15); }
+          .modal-upgrade-checkout .modal-body > section.payment-option form .card-info .credit-card-type.unknown-type:after {
+            content: "?";
+            font-weight: bold;
+            font-size: 2em;
+            font-style: normal;
+            display: table-cell;
+            vertical-align: middle;
+            width: 91px;
+            height: 57px;
+            color: #999999; }
+          .modal-upgrade-checkout .modal-body > section.payment-option form .card-info .credit-card-type.identified-type {
+            background: url(../img/creditcards.jpg); }
+          .modal-upgrade-checkout .modal-body > section.payment-option form .card-info .credit-card-type.visa {
+            background-position: 224px 321px;
+            background-size: 473px; }
+    .modal-upgrade-checkout .modal-body > section.billing-address fieldset:before, .modal-upgrade-checkout .modal-body > section.billing-address fieldset:after {
+      content: " ";
+      display: table; }
+    .modal-upgrade-checkout .modal-body > section.billing-address fieldset:after {
+      clear: both; }
+    .modal-upgrade-checkout .modal-body > section.billing-address fieldset .form-group {
+      float: left;
+      width: 49%; }
+      .modal-upgrade-checkout .modal-body > section.billing-address fieldset .form-group + .form-group {
+        margin-left: 2%; }
+    .modal-upgrade-checkout .modal-body > section.billing-address fieldset.identity {
+      border-bottom: 1px solid #eeeeee;
+      margin-bottom: 10px; }
+    .modal-upgrade-checkout .modal-body > section.billing-address fieldset.zip-city .form-group {
+      width: 23%; }
+      .modal-upgrade-checkout .modal-body > section.billing-address fieldset.zip-city .form-group + .form-group {
+        width: 35%; }
+        .modal-upgrade-checkout .modal-body > section.billing-address fieldset.zip-city .form-group + .form-group + .form-group {
+          width: 38%; }
     .modal-upgrade-checkout .modal-body > section + section {
       border-top: 1px solid #eeeeee; }
 
@@ -6072,3 +6135,7 @@ button.close {
 
 .slidedown {
   max-height: 500px; }
+
+label.optional:after {
+  content: " (optional)";
+  font-weight: normal; }
