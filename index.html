@@ -32,10 +32,10 @@
       </div>
       <div class="pro-ad" ng-if="!hasPro || hasPro && selectedPlan == 'pro'">
         <p>
-          <span ng-if="!hasPro">You have 120 minutes left.</span>
-          <span ng-if="hasPro && selectedPlan == 'pro'">You have 240 minutes left.</span>
-          <span ng-if="!hasPro" class="text-muted">Paid accounts have more time and access to advanced features.</span>
-          <span ng-if="hasPro && selectedPlan == 'pro'" class="text-muted">Master accounts have unlimited upload time and access to even more features.</span>
+          <span ng-if="!hasPro">You have no minutes left.</span>
+          <span ng-if="hasPro && selectedPlan == 'pro'">You have 120 minutes left.</span>
+          <span ng-if="!hasPro" class="text-muted">Get more upload time with a paid account.</span>
+          <span ng-if="hasPro && selectedPlan == 'pro'" class="text-muted">Get more upload time with a Master account.</span>
           <span ng-controller="Modal1Ctrl" class="pull-right">
               <script type="text/ng-template" id="modal1Content.html">
                   <div class="modal-header text-center">
@@ -60,7 +60,7 @@
                     <section class="pro-sell-column pro-sell-rows">
                       <div class="row">
                         <header>
-                          <h2>Free <small>(your current plan)</small></h2>
+                          <h2>Free <small ng-if="!hasPro">(your current plan)</small></h2>
                         </header>
                         <ul class="plan-benefits">
                           <li>
@@ -73,7 +73,7 @@
                       </div>
                       <div class="row">
                         <header>
-                          <h2>Pro</h2>
+                          <h2>Pro <small ng-if="hasPro && selectedPlan == 'pro'">(your current plan)</small></h2>
                           <p class="text-muted">
                             $6/month or $55/year
                           </p>
@@ -96,7 +96,7 @@
                       </div>
                     </section>
                     <section class="pro-sell-column">
-                      <h2>Master</h2>
+                      <h2>Master <small ng-if="hasPro && selectedPlan == 'master'">(your current plan)</small></h2>
                       <p class="text-muted">
                         $15/month or $135/year
                       </p>
@@ -139,7 +139,7 @@
                         Selected plan:
                         <strong ng-if="selectedPlan == 'pro'">Pro</strong>
                         <strong ng-if="selectedPlan == 'master'">Master</strong>
-                        <a class="btn btn-xs btn-default" ng-show="selectedPlan == 'master'" ng-click="togglePlan('pro')">Switch to Pro</a>
+                        <a class="btn btn-xs btn-default" ng-show="selectedPlan == 'master' && !hasPro" ng-click="togglePlan('pro')">Switch to Pro</a>
                         <a class="btn btn-xs btn-default" ng-show="selectedPlan == 'pro'" ng-click="togglePlan('master')">Switch to Master</a>
                       </h4>
                     </section>
@@ -147,26 +147,26 @@
                     <section class="payment-cycle">
                       <h4>Payment cycle:</h4>
                       <div class="radio" ng-if="selectedPlan == 'pro'">
-                        <label>
+                        <label tooltip="We will bill your credit card on a monthly basis. You can cancel your subscription any time.">
                           <input type="radio" ng-model="payCycle" value="6" name="payCycleRadio">
                           $6/month
                         </label>
                       </div>
                       <div class="radio" ng-if="selectedPlan == 'pro'">
-                        <label>
+                      <label tooltip="We will bill you once immediately after purchase. We will remind you when your plan is about to expire.">
                         <input type="radio" ng-model="payCycle" value="55" name="payCycleRadio">
                           $55/year <small class="text-success">(save $17!)</small>
                         </label>
                       </div>
                       
                       <div class="radio" ng-if="selectedPlan == 'master'">
-                        <label>
+                      <label tooltip="We will bill your credit card on a monthly basis. You can cancel your subscription any time.">
                         <input type="radio" ng-model="payCycle" value="15" name="payCycleRadio">
                           $15/month
                         </label>
                       </div>
                       <div class="radio" ng-if="selectedPlan == 'master'">
-                        <label>
+                      <label tooltip="We will bill you once immediately after purchase. We will remind you when your plan is about to expire.">
                         <input type="radio" ng-model="payCycle" value="135" name="payCycleRadio">
                           $135/year <small class="text-success">(save $45!)</small>
                         </label>
