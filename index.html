@@ -51,37 +51,48 @@
                       </ul>
                   </div>
                   <div class="modal-body">
-                    <section class="pro-sell-column well">
-                      <h2>Pro</h2>
-                      <p class="price">
-                        $6/month
-                        <small>or $55/year</small>
-                      </p>
-                      <ul class="plan-benefits">
-                        <li>
-                          <i class="ss-icon ss-standard">music</i>
-                          <strong>4 hours</strong> of upload time
-                        </li>
-                        <li>
-                          <i class="ss-icon ss-standard">barchart</i>
-                          <strong>More stats</strong> - get insights about your listeners and where your tracks get the most traffic.
-                        </li>
-                        <li>
-                          <i class="ss-icon ss-standard">chat</i>
-                          Manage the visibility of comments and stats on your tracks.
-                        </li>
-                        <li>
-                          <i class="ss-icon ss-standard">pin</i>
-                          Pin tracks and playlists to the top of your profile
-                        </li>
-                      </ul>
-                      <button class="btn btn-warning btn-lg" ng-click="openNext('pro')">Upgrade to Pro</button>
+                    <section class="pro-sell-column pro-sell-rows">
+                      <div class="row">
+                        <header>
+                          <h2>Free <small>(your current plan)</small></h2>
+                        </header>
+                        <ul class="plan-benefits">
+                          <li>
+                            <strong>2 hours</strong> of upload time
+                          </li>
+                          <li>
+                            <strong>Basic stats</strong> - Monitor social activity on your tracks.
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="row">
+                        <header>
+                          <h2>Pro</h2>
+                          <p class="text-muted">
+                            $6/month or $55/year
+                          </p>
+                        </header>
+                        <ul class="plan-benefits">
+                          <li>
+                            <strong>4 hours</strong> of upload time
+                          </li>
+                          <li>
+                            <strong>More stats</strong> - get insights about your listeners and where your tracks get the most traffic.
+                          </li>
+                          <li>
+                            Toggle visibility of comments &amp; stats on your tracks.
+                          </li>
+                          <li>
+                            Pin tracks and playlists to the top of your profile
+                          </li>
+                        </ul>
+                        <button class="btn btn-warning" ng-click="openNext('pro')">Upgrade to Pro</button>
+                      </div>
                     </section>
                     <section class="pro-sell-column">
                       <h2>Master</h2>
-                      <p class="price">
-                        $15/month
-                        <small>or $135/year</small>
+                      <p class="text-muted">
+                        $15/month or $135/year
                       </p>
                       <ul class="plan-benefits">
                         <li>
@@ -94,7 +105,7 @@
                         </li>
                         <li>
                           <i class="ss-icon ss-standard">chat</i>
-                          Manage the visibility of comments and stats on your tracks.
+                          Toggle visibility of comments &amp; stats on your tracks.
                         </li>
                         <li>
                           <i class="ss-icon ss-standard">pin</i>
@@ -114,27 +125,16 @@
                   <div class="modal-header text-center">
                     <button type="button" class="close" ng-click="cancel()">&times;</button>
                       <h3>Upgrade your account</h3>
-                      <p>Only a minute until you can upload more tracks.</p>
+                      <p>Only a minute left until you can upload more tracks.</p>
                   </div>
                   <div class="modal-body">
                     <section class="selected-plan">
                       <h4>
                         Selected plan:
-                        <span class="dropdown">
-                          <a class="dropdown-toggle">
-                            <span ng-if="selectedPlan == 'pro'">Pro</span>
-                            <span ng-if="selectedPlan == 'master'">Master</span>
-                            <i class="ss-icon ss-standard">&#x25BE;</i>
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li ng-show="selectedPlan == 'master'">
-                              <a ng-click="togglePlan('pro')">Pro</a>
-                            </li>
-                            <li ng-show="selectedPlan == 'pro'">
-                              <a ng-click="togglePlan('master')">Master</a>
-                            </li>
-                          </ul>
-                        </span>
+                        <strong ng-if="selectedPlan == 'pro'">Pro</strong>
+                        <strong ng-if="selectedPlan == 'master'">Master</strong>
+                        <a class="btn btn-xs btn-default" ng-show="selectedPlan == 'master'" ng-click="togglePlan('pro')">Switch to Pro</a>
+                        <a class="btn btn-xs btn-default" ng-show="selectedPlan == 'pro'" ng-click="togglePlan('master')">Switch to Master</a>
                       </h4>
                     </section>
                     
@@ -165,6 +165,7 @@
                           $135/year
                         </label>
                       </div>
+                      <p class="text-muted"><small>All prices are in USD.</small></p>
                     </section>
                     
                     <section class="payment-option">

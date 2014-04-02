@@ -5906,7 +5906,8 @@ button.close {
     border-radius: 0; }
   .modal-upgrade-sell .modal-dialog .modal-header {
     background: url(../img/banner1.jpg) no-repeat right top;
-    padding: 45px; }
+    padding: 45px;
+    border-bottom: 0; }
     .modal-upgrade-sell .modal-dialog .modal-header:before, .modal-upgrade-sell .modal-dialog .modal-header:after {
       content: " ";
       display: table; }
@@ -5952,10 +5953,9 @@ button.close {
     .modal-upgrade-sell .pro-benefits li + li {
       margin-left: 2%; }
 .modal-upgrade-sell .pro-sell-column {
-  width: 50%;
+  width: 55%;
   float: left;
-  padding: 20px 30px;
-  text-align: center; }
+  padding: 40px 40px; }
   .modal-upgrade-sell .pro-sell-column h2 {
     margin: 0; }
   .modal-upgrade-sell .pro-sell-column .price {
@@ -5965,7 +5965,6 @@ button.close {
       color: #555555;
       font-size: .75em; }
   .modal-upgrade-sell .pro-sell-column .plan-benefits {
-    text-align: left;
     list-style: none;
     margin: 20px 0 25px;
     padding: 0; }
@@ -5974,11 +5973,34 @@ button.close {
       .modal-upgrade-sell .pro-sell-column .plan-benefits li .ss-icon {
         margin-right: 5px;
         color: #555555; }
-  .modal-upgrade-sell .pro-sell-column.well, .modal-upgrade-sell .pro-sell-column.pro-ad {
-    border-radius: 0;
-    margin: 0; }
-  .modal-upgrade-sell .pro-sell-column + .pro-sell-column {
-    border-left: 1px solid #eeeeee; }
+  .modal-upgrade-sell .pro-sell-column.pro-sell-rows {
+    width: 45%;
+    padding: 0; }
+    .modal-upgrade-sell .pro-sell-column.pro-sell-rows .row {
+      padding: 15px;
+      margin: 0;
+      background: #eeeeee;
+      border-right: 1px solid rgba(0, 0, 0, 0.15);
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15); }
+      .modal-upgrade-sell .pro-sell-column.pro-sell-rows .row + .row {
+        border-top: 1px solid rgba(0, 0, 0, 0.15); }
+    .modal-upgrade-sell .pro-sell-column.pro-sell-rows small {
+      display: inline; }
+    .modal-upgrade-sell .pro-sell-column.pro-sell-rows h2 {
+      color: #555555;
+      font-size: 1.5em; }
+    .modal-upgrade-sell .pro-sell-column.pro-sell-rows p {
+      font-size: 1em; }
+    .modal-upgrade-sell .pro-sell-column.pro-sell-rows .btn {
+      margin-top: 10px; }
+    .modal-upgrade-sell .pro-sell-column.pro-sell-rows .plan-benefits {
+      margin: 10px 0 0;
+      list-style: disc;
+      padding-left: 15px; }
+      .modal-upgrade-sell .pro-sell-column.pro-sell-rows .plan-benefits li {
+        font-size: .95em; }
+        .modal-upgrade-sell .pro-sell-column.pro-sell-rows .plan-benefits li:last-child {
+          margin: 0; }
 
 .modal-upgrade-checkout .modal-content {
   border-radius: 0;
@@ -6006,6 +6028,20 @@ button.close {
   padding: 0; }
   .modal-upgrade-checkout .modal-body > section {
     padding: 15px; }
+    .modal-upgrade-checkout .modal-body > section.payment-cycle h4, .modal-upgrade-checkout .modal-body > section.payment-cycle .radio {
+      display: inline-block; }
+    .modal-upgrade-checkout .modal-body > section.payment-cycle .radio {
+      vertical-align: middle;
+      line-height: 1em;
+      margin-left: 3px; }
+      .modal-upgrade-checkout .modal-body > section.payment-cycle .radio label {
+        vertical-align: middle;
+        padding-left: 15px; }
+      .modal-upgrade-checkout .modal-body > section.payment-cycle .radio input {
+        margin-top: 0;
+        margin-left: -15px; }
+      .modal-upgrade-checkout .modal-body > section.payment-cycle .radio + .radio {
+        margin: 0 0 0 6px; }
     .modal-upgrade-checkout .modal-body > section.payment-option {
       padding-bottom: 30px; }
       .modal-upgrade-checkout .modal-body > section.payment-option .btn + .btn {
@@ -6018,6 +6054,9 @@ button.close {
   margin-left: 3px; }
 .dropdown a {
   cursor: pointer; }
+
+.radio {
+  margin: 0; }
 
 .slideup, .slidedown {
   -webkit-transition: 0.5s max-height;
