@@ -26,3 +26,117 @@
     margin-top:-7px;
   }
 }
+
+.modal-upgrade-sell {
+  .modal-dialog {
+    width:95%;
+    max-width:800px;
+    
+    .modal-content {
+      border-radius:0;
+    }
+    
+    .modal-header {
+      @include clearfix;
+      background:url(../img/banner1.jpg) no-repeat right top;
+      padding:45px;
+      
+      .close {
+        color:$white;
+        top:20px;
+        right:20px;
+        position:absolute;
+        opacity:.5;
+        
+        &:hover {
+          opacity:1;
+        }
+      }
+      
+      h3 {
+        margin:0;
+        font-size:2.5em;
+        background:$black;
+        color:$white;
+        padding:5px 10px 10px;
+      }
+    }
+    
+    .modal-body {
+      @include clearfix;
+      padding:0;
+    }
+  }
+  
+  .pro-benefits {
+    margin:40px 0 0;
+    padding:0;
+    list-style:none;
+    
+    li {
+      float:left;
+      width:31.999%;
+      background:fade-out($black,.2);
+      color:$white;
+      padding:10px;
+      
+      h4 {
+        font-size:1.75em;
+      }
+      
+      p {
+        color:$gray-light;
+      }
+      
+      + li {
+        margin-left:2%;
+      }
+    }
+  }
+  
+  .pro-sell-column {
+    width:50%;
+    float:left;
+    padding:20px 30px;
+    text-align:center;
+    
+    h2 {
+      margin:0;
+    }
+    
+    .price {
+      font-size:1.5em;
+      
+      small {
+        display:block;
+        color:$gray;
+        font-size:.75em;
+      }
+    }
+    
+    .plan-benefits {
+      text-align:left;
+      list-style:none;
+      margin:20px 0 25px;
+      padding:0;
+      
+      li {
+        margin:0 0 10px;
+        
+        .ss-icon {
+          margin-right:5px;
+          color:$gray;
+        }
+      }
+    }
+    
+    &.well {
+      border-radius:0;
+      margin:0;
+    }
+    
+    + .pro-sell-column {
+      border-left:1px solid $gray-lighter;
+    }
+  }
+}
