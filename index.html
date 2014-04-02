@@ -13,6 +13,10 @@
 	<body ng-controller="scController">
     <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
       <a class="navbar-brand">SoundCloud Navigation</a>
+      
+      <span ng-controller="Modal1Ctrl" class="pull-right upgrade-reminder" ng-if="!hasPro" tooltip="You're out of upload time! Please upgrade your account or wait until your limit resets." tooltip-placement="bottom">
+        <button class="btn btn-warning btn-sm" ng-click="open();">Upgrade account</button>
+      </span>
     </nav>
 		<section class="container col-md-8">
       <h2>Post and share your sounds with the world</h2>

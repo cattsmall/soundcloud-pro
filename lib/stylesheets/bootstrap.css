@@ -5880,6 +5880,9 @@ button.close {
 .ss-rss:before, .ss-rss.right:after {
   content: ''; }
 
+.navbar .upgrade-reminder {
+  margin: 10px 300px 0 0; }
+
 .container.col-md-8 {
   float: none; }
 
