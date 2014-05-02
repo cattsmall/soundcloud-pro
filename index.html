@@ -13,6 +13,10 @@
 	<body ng-controller="scController">
     <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
       <a class="navbar-brand">SoundCloud Navigation</a>
+      
+      <span ng-controller="Modal1Ctrl" class="pull-right upgrade-reminder" ng-if="!hasPro" tooltip="You're out of upload time! Please upgrade your account or wait until your limit resets." tooltip-placement="bottom">
+        <button class="btn btn-warning btn-sm" ng-click="open();">Upgrade account</button>
+      </span>
     </nav>
 		<section class="container col-md-8">
       <h2>Post and share your sounds with the world</h2>
@@ -26,10 +30,12 @@
           </label>
         </div>
       </div>
-      <div class="pro-ad" ng-if="!hasPro">
+      <div class="pro-ad" ng-if="!hasPro || hasPro && selectedPlan == 'pro'">
         <p>
-          You have 120 minutes left.
-          <span class="text-muted">Pro accounts have more time and access to advanced features.</span>
+          <span ng-if="!hasPro">You have no minutes left.</span>
+          <span ng-if="hasPro && selectedPlan == 'pro'">You have 120 minutes left.</span>
+          <span ng-if="!hasPro" class="text-muted">Get more upload time with a paid account.</span>
+          <span ng-if="hasPro && selectedPlan == 'pro'" class="text-muted">Get more upload time with a Master account.</span>
           <span ng-controller="Modal1Ctrl" class="pull-right">
               <script type="text/ng-template" id="modal1Content.html">
                   <div class="modal-header text-center">
@@ -51,37 +57,48 @@
                       </ul>
                   </div>
                   <div class="modal-body">
-                    <section class="pro-sell-column well">
-                      <h2>Pro</h2>
-                      <p class="price">
-                        $6/month
-                        <small>or $55/year</small>
-                      </p>
-                      <ul class="plan-benefits">
-                        <li>
-                          <i class="ss-icon ss-standard">music</i>
-                          <strong>4 hours</strong> of upload time
-                        </li>
-                        <li>
-                          <i class="ss-icon ss-standard">barchart</i>
-                          <strong>More stats</strong> - get insights about your listeners and where your tracks get the most traffic.
-                        </li>
-                        <li>
-                          <i class="ss-icon ss-standard">chat</i>
-                          Manage the visibility of comments and stats on your tracks.
-                        </li>
-                        <li>
-                          <i class="ss-icon ss-standard">pin</i>
-                          Pin tracks and playlists to the top of your profile
-                        </li>
-                      </ul>
-                      <button class="btn btn-warning btn-lg" ng-click="openNext('pro')">Upgrade to Pro</button>
+                    <section class="pro-sell-column pro-sell-rows">
+                      <div class="row">
+                        <header>
+                          <h2>Free <small ng-if="!hasPro">(your current plan)</small></h2>
+                        </header>
+                        <ul class="plan-benefits">
+                          <li>
+                            <strong>2 hours</strong> of upload time
+                          </li>
+                          <li>
+                            <strong>Basic stats</strong> - Monitor social activity on your tracks
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="row">
+                        <header>
+                          <h2>Pro <small ng-if="hasPro && selectedPlan == 'pro'">(your current plan)</small></h2>
+                          <p class="text-muted">
+                            $6/month or $55/year
+                          </p>
+                        </header>
+                        <ul class="plan-benefits">
+                          <li>
+                            <strong>4 hours</strong> of upload time
+                          </li>
+                          <li>
+                            <strong>More stats</strong> - get insights about your listeners and where your tracks get the most traffic
+                          </li>
+                          <li>
+                            Toggle visibility of comments &amp; stats on your tracks
+                          </li>
+                          <li>
+                            Pin tracks and playlists to the top of your profile
+                          </li>
+                        </ul>
+                        <button class="btn btn-warning" ng-click="openNext('pro')">Upgrade to Pro</button>
+                      </div>
                     </section>
                     <section class="pro-sell-column">
-                      <h2>Master</h2>
-                      <p class="price">
-                        $15/month
-                        <small>or $135/year</small>
+                      <h2>Master <small ng-if="hasPro && selectedPlan == 'master'">(your current plan)</small></h2>
+                      <p class="text-muted">
+                        $15/month or $135/year
                       </p>
                       <ul class="plan-benefits">
                         <li>
@@ -90,15 +107,15 @@
                         </li>
                         <li>
                           <i class="ss-icon ss-standard">barchart</i>
-                          <strong>Comprehensive stats</strong> - know from which sites and apps your tracks are being played.
+                          <strong>Comprehensive stats</strong> - get insights about your listeners &amp; from which sites/apps your tracks are played
                         </li>
                         <li>
                           <i class="ss-icon ss-standard">chat</i>
-                          Manage the visibility of comments and stats on your tracks.
+                          Toggle visibility of comments &amp; stats on your tracks
                         </li>
                         <li>
                           <i class="ss-icon ss-standard">pin</i>
-                          Suggest tracks &amp; playlists in embedded players
+                          Pin tracks &amp; playlists to the top of your profile as well as suggest them in embedded players
                         </li>
                       </ul>
                       <button class="btn btn-danger btn-lg" ng-click="openNext('master')">Upgrade to Master</button>
@@ -114,85 +131,150 @@
                   <div class="modal-header text-center">
                     <button type="button" class="close" ng-click="cancel()">&times;</button>
                       <h3>Upgrade your account</h3>
-                      <p>Only a minute until you can upload more tracks.</p>
+                      <p>Enter your payment information and you're ready to go.</p>
                   </div>
                   <div class="modal-body">
                     <section class="selected-plan">
                       <h4>
                         Selected plan:
-                        <span class="dropdown">
-                          <a class="dropdown-toggle">
-                            <span ng-if="selectedPlan == 'pro'">Pro</span>
-                            <span ng-if="selectedPlan == 'master'">Master</span>
-                            <i class="ss-icon ss-standard">&#x25BE;</i>
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li ng-show="selectedPlan == 'master'">
-                              <a ng-click="togglePlan('pro')">Pro</a>
-                            </li>
-                            <li ng-show="selectedPlan == 'pro'">
-                              <a ng-click="togglePlan('master')">Master</a>
-                            </li>
-                          </ul>
-                        </span>
+                        <strong ng-if="selectedPlan == 'pro'">Pro</strong>
+                        <strong ng-if="selectedPlan == 'master'">Master</strong>
+                        <a class="btn btn-xs btn-default" ng-show="selectedPlan == 'master' && !hasPro" ng-click="togglePlan('pro')">Switch to Pro</a>
+                        <a class="btn btn-xs btn-default" ng-show="selectedPlan == 'pro'" ng-click="togglePlan('master')">Switch to Master</a>
                       </h4>
                     </section>
                     
                     <section class="payment-cycle">
                       <h4>Payment cycle:</h4>
                       <div class="radio" ng-if="selectedPlan == 'pro'">
-                        <label>
-                          <input type="radio" ng-model="payCycle" value="6">
+                        <label tooltip="We will bill your credit card on a monthly basis. You can cancel your subscription any time.">
+                          <input type="radio" ng-model="payCycle" value="6" name="payCycleRadio">
                           $6/month
                         </label>
                       </div>
                       <div class="radio" ng-if="selectedPlan == 'pro'">
-                        <label>
-                        <input type="radio" ng-model="payCycle" value="55">
-                          $55/year
+                      <label tooltip="We will bill you once immediately after purchase. We will remind you when your plan is about to expire.">
+                        <input type="radio" ng-model="payCycle" value="55" name="payCycleRadio">
+                          $55/year <small class="text-success">(save $17!)</small>
                         </label>
                       </div>
                       
                       <div class="radio" ng-if="selectedPlan == 'master'">
-                        <label>
-                        <input type="radio" ng-model="payCycle" value="15">
+                      <label tooltip="We will bill your credit card on a monthly basis. You can cancel your subscription any time.">
+                        <input type="radio" ng-model="payCycle" value="15" name="payCycleRadio">
                           $15/month
                         </label>
                       </div>
                       <div class="radio" ng-if="selectedPlan == 'master'">
-                        <label>
-                        <input type="radio" ng-model="payCycle" value="135">
-                          $135/year
+                      <label tooltip="We will bill you once immediately after purchase. We will remind you when your plan is about to expire.">
+                        <input type="radio" ng-model="payCycle" value="135" name="payCycleRadio">
+                          $135/year <small class="text-success">(save $45!)</small>
                         </label>
                       </div>
+                      <p class="text-muted"><small>All paid plans come with a 30 day money back guarantee. Prices are in US Dollars.</small></p>
                     </section>
                     
                     <section class="payment-option">
                       <h4>Payment method:</h4>
-                      <button class="btn btn-danger btn-lg" ng-click="paymentType = 'credit';">
+                      <button class="btn btn-danger" ng-click="paymentType = 'credit';" ng-class="{'btn-lg': paymentType != 'paypal', 'btn-sm': paymentType == 'paypal', 'active': paymentType == 'credit'}">
                         <i class="ss-icon ss-standard">&#x1F4B3;</i>
                         Credit
                       </button>
-                      <button class="btn btn-warning btn-lg" ng-click="paymentType = 'paypal';">
+                      <button class="btn btn-warning" ng-click="paymentType = 'paypal';" ng-class="{'btn-lg': paymentType != 'credit', 'btn-sm': paymentType == 'credit', 'active': paymentType == 'paypal'}">
                         <i class="ss-icon ss-social">PayPal</i>
                         PayPal
                       </button>
+                      
+                      <form name="billingInfo" ng-class="{slidedown: paymentType == 'credit', slideup: paymentType != 'credit'}">
+                        <div class="form-group">
+                          <label>Name on Card</label>
+                          <input type="text" class="form-control" ng-model="user.card.name">
+                        </div>
+                        <fieldset class="card-info">
+                          <div class="form-group">
+                            <label>Card Number</label>
+                            <input type="text" class="form-control" ng-model="user.card.number" ng-focus="cidIsFocused == false" placeholder="No dashes or spaces needed">
+                          </div>
+                        
+                          <div class="form-group">
+                            <label>Expiration Date</label>
+                            <input type="text" class="form-control" ng-model="user.card.expiration" placeholder="MM/YY">
+                          </div>
+                          <div class="form-group">
+                            <label>CVC/CVV/CID</label>
+                            <input type="text" class="form-control" ng-model="user.card.id" ng-focus="cidIsFocused == true">
+                          </div>
+                          <i class="credit-card-type" ng-class="{'unknown-type':!user.card.number || user.card.number == '', 'identified-type visa':user.card.number, 'visa-back':user.card.number && cidIsFocused}"></i>
+                        </fieldset>
+                      </form>
                     </section>
                     
                     <section class="billing-address" ng-class="{slidedown: paymentType == 'credit', slideup: paymentType != 'credit'}">
-                      <h4>Billing Address:</h4>
+                      <h4>Billing Information:</h4>
+                      
+                      <form name="billingAddress">
+                        <fieldset class="identity">
+                          <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" ng-model="user.name">
+                          </div>
+                          <div class="form-group">
+                            <label class="optional">Company</label>
+                            <input type="text" class="form-control" ng-model="user.company">
+                          </div>
+                        </fieldset>
+                        
+                        <fieldset class="address">
+                          <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" class="form-control" ng-model="user.address" placeholder="Enter your address">
+                          </div>
+                          <div class="form-group">
+                            <label class="optional">Address Line 2</label>
+                            <input type="text" class="form-control" ng-model="user.address2">
+                          </div>
+                        </fieldset>
+                        
+                        <fieldset class="zip-city">
+                          <div class="form-group">
+                            <label>Zip Code</label>
+                            <input type="text" class="form-control" ng-model="user.zip" placeholder="Zip/Postcode">
+                          </div>
+                        
+                          <div class="form-group">
+                            <label>City</label>
+                            <input type="text" class="form-control" ng-model="user.city" placeholder="City or town">
+                          </div>
+                          
+                          <div class="form-group">
+                            <label>Country</label>
+                            <input type="text" class="form-control" ng-model="user.country">
+                          </div>
+                          
+                          <div class="form-group" ng-if="user.country == 'United States'">
+                            <label>State</label>
+                            <input type="text" class="form-control" ng-model="user.state" placeholder="e.g. NY">
+                          </div>
+                        </fieldset>
+                      </form>
                     </section>
                   </div>
                   <div class="modal-footer" ng-class="{slidedown: paymentType, slideup: !paymentType}">
-                    <button class="btn btn-danger btn-lg" ng-click="ok();">
+                    <button class="btn btn-lg" ng-click="openNext();" ng-class="{'btn-danger': paymentType == 'credit', 'btn-warning': paymentType == 'paypal'}">
                       <span ng-if="paymentType != 'credit'">Checkout with PayPal</span>
-                      <span ng-if="paymentType == 'credit'">                   
-                        Finish Upgrading
-                      </span>
+                      <span ng-if="paymentType == 'credit'">Finish Upgrading</span>
                     </button>
                   </div>
               </script>
-              <button class="btn btn-warning" ng-click="open();">Go Pro</button>
+              
+              <!-- Script -->
+              <script type="text/ng-template" id="modal3Content.html">
+                <div class="modal-body">
+                  <h3>Thanks {{user.firstname}}, you're ready to go!</h3>
+                  <p>Your account has been upgraded successfully. You can now upload more tracks.</p>
+                </div>
+              </script>
+              <button class="btn btn-warning" ng-click="open();">Upgrade<span ng-if="!hasPro"> your account</span></button>
           </span>
         </p>
       </div>

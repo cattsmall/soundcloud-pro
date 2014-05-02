@@ -1,6 +1,24 @@
+.navbar {
+  .upgrade-reminder {
+    margin:10px 300px 0 0;
+  }
+}
+
 .container {
   &.col-md-8 {
     float:none;
+  }
+}
+
+.btn {
+  outline:none;
+  
+  &:focus, &:active, &.active {
+    outline:none;
+    
+    &:focus {
+      outline:none;
+    }
   }
 }
 
@@ -9,6 +27,10 @@
   padding-bottom:105px;
   border-radius:0;
   margin:20px 0 0;
+  
+  + p {
+    margin-top:20px;
+  }
 }
 
 .pro-ad {
@@ -40,6 +62,7 @@
       @include clearfix;
       background:url(../img/banner1.jpg) no-repeat right top;
       padding:45px;
+      border-bottom:0;
       
       .close {
         color:$white;
@@ -65,6 +88,7 @@
     .modal-body {
       @include clearfix;
       padding:0;
+//      background:$state-success-bg;
     }
     
     .modal-footer {
@@ -101,10 +125,9 @@
   }
   
   .pro-sell-column {
-    width:50%;
+    width:55%;
     float:left;
-    padding:20px 30px;
-    text-align:center;
+    padding:35px 40px 0;
     
     h2 {
       margin:0;
@@ -121,7 +144,6 @@
     }
     
     .plan-benefits {
-      text-align:left;
       list-style:none;
       margin:20px 0 25px;
       padding:0;
@@ -136,13 +158,56 @@
       }
     }
     
-    &.well {
-      border-radius:0;
-      margin:0;
+    &.pro-sell-rows {
+      width:45%;
+      padding:0;
+      
+      .row {
+        padding:15px;
+        margin:0;
+        background:$gray-lighter;
+        border-right:1px solid fade-out($black,.85);
+        box-shadow:inset 0 0 10px fade-out($black,.85);
+        
+        + .row {
+          border-top:1px solid fade-out($black,.85);
+        }
+      }
+      
+      small {
+        display:inline;
+      }
+      
+      h2 {
+        color:$gray;
+        font-size:1.5em;
+      }
+      
+      p {
+        font-size:1em;
+      }
+      
+      .btn {
+        margin-top:10px;
+      }
+      
+      .plan-benefits {
+        margin:10px 0 0;
+        list-style: disc;
+        padding-left:15px;
+        
+        li {
+          font-size:.95em;
+          
+          &:last-child {
+            margin:0;
+          }
+        }
+      }
+
     }
     
     + .pro-sell-column {
-      border-left:1px solid $gray-lighter;
     }
   }
 }
@@ -189,6 +254,36 @@
     > section {
       padding:15px;
       
+      &.payment-cycle {
+        h4, .radio {
+          display:inline-block;
+        }
+        
+        .radio {
+          vertical-align:middle;
+          line-height: 1em;
+          margin-left:10px;
+          
+          label {
+            vertical-align: middle;
+            padding-left:15px;
+          }
+          
+          input {
+            margin-top:0;
+            margin-left:-15px;
+          }
+          
+          + .radio {
+            margin:0 0 0 10px;
+          }
+        }
+      }
+      
+      .form-group {
+        text-align:left;
+      }
+      
       &.payment-option {
         padding-bottom:30px;
         
@@ -197,10 +292,136 @@
             margin-left:8px;
           }
         }
+        
+        form {
+          &.slidedown {
+            margin-top:20px;
+          }
+          
+          fieldset {
+            .form-group {
+              float:left;
+            
+              + .form-group {
+                margin-left:2%;
+              }
+            }
+          }
+          
+          .card-info {
+            position:relative;
+            
+            .form-group {
+              width:38%;
+              margin-bottom:0;
+              
+              + .form-group {
+                width:20%;
+                
+                + .form-group {
+                  width:20%;
+                }
+              }
+            }
+            
+            .credit-card-type {
+              display:block;
+              width:16%;
+              height:57px;
+              background:$gray-lighter;
+              right:0;
+              bottom:0;
+              position:absolute;
+              border-radius:4px;
+              border:1px solid fade-out($black, .85);
+              
+              &.unknown-type {
+                &:after {
+                  content:"?";
+                  font-weight:bold;
+                  font-size:2em;
+                  font-style:normal;
+                  display:table-cell;
+                  vertical-align:middle;
+                  width: 91px;
+                  height:57px;
+                  color:$gray-light;
+                }
+              }
+              
+              &.identified-type {
+                background:url(../img/creditcards.jpg);
+              }
+              
+              &.visa {
+                background-position:224px 321px;
+                background-size:473px;
+              }
+            }
+          }
+        }
+      }
+      
+      &.billing-address {
+        
+        fieldset {
+          @include clearfix;
+          
+          .form-group {
+            float:left;
+            width:49%;
+            
+            + .form-group {
+              margin-left:2%;
+            }
+          }
+          
+          &.identity {
+            border-bottom: 1px solid $gray-lighter;
+            margin-bottom:10px;
+          }
+          
+          &.zip-city {
+            .form-group {
+              width:20%;
+              
+              + .form-group {
+                width:28%;
+                
+                + .form-group {
+                  width:33%;
+                  
+                  + .form-group {
+                    width:13%;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
       
       + section {
         border-top: 1px solid $gray-lighter;
+      }
+    }
+  }
+}
+
+.modal-upgrade-success {
+  .modal-dialog {
+    margin-top:100px;
+  }
+  .modal-content {
+    background:$state-success-bg;
+    text-align:center;
+    
+    h3 {
+      color:$state-success-text;
+      
+      &:before {
+        @extend .ss-icon.ss-standard;
+        content:"check ";
       }
     }
   }
@@ -219,6 +440,10 @@
   }
 }
 
+.radio {
+  margin:0;
+}
+
 .slideup, .slidedown {
   @include transition(.5s max-height);
   overflow:hidden;
@@ -233,4 +458,15 @@
 
 .slidedown {
   max-height:500px;
+}
+
+label {
+  &.optional {
+    @extend .text-muted;
+    
+    &:after {
+      content:" (optional)";
+      font-weight:normal;
+    }
+  }
 }
